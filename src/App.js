@@ -12,11 +12,11 @@ import { AuthContext } from "./context/AuthContext";
 
 function App() {
     const { isAuth, login, logout } = useContext(AuthContext)
-    console.log(isAuth)
+    // console.log(isAuth)
 
   return (
     <>
-        {console.log(isAuth)}
+    {/*{console.log(isAuth)}*/}
       <NavBar />
       <div className="content">
         <Routes>

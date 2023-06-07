@@ -5,11 +5,11 @@ import { AuthContext } from "../context/AuthContext";
 
 function NavBar() {
   const navigate = useNavigate();
-  const { isAuth, login, logout } = useContext(AuthContext)
-  console.log(isAuth)
+  const { isAuth, login, logout } = useContext(AuthContext);
+  // console.log(isAuth);
 
   return (
-    <nav>
+      <nav>
         <Link to="/">
           <span className="logo-container">
             <img src={logo} alt="logo"/>
@@ -19,22 +19,31 @@ function NavBar() {
           </span>
         </Link>
 
-      <div>
-        <button
-          type="button"
-          onClick={() => navigate('/signin')}
-        >
-          Log in
-        </button>
-        <button
-          type="button"
-          onClick={() => navigate('/signup')}
-        >
-          Registreren
-        </button>
-      </div>
-    </nav>
-  );
-}
+        {isAuth ?
+            <button
+                type="button"
+                onClick={logout}
+            >
+              Log uit
+            </button>
+            :
+            <div>
+              <button
+                  type="button"
+                  onClick={() => navigate('/signin')}
+              >
+                Log in
+              </button>
+              <button
+                  type="button"
+                  onClick={() => navigate('/signup')}
+              >
+                Registreren
+              </button>
+            </div>
+        }
+      </nav>
+    )
+  }
 
 export default NavBar;
