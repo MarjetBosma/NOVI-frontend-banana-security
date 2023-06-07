@@ -80,14 +80,23 @@ nav a:active {
   color: white;
 }
 
+.wrapper-username-logout {
+  display: flex;
+}
+
+.wrapper-username-logout button {
+  margin-block: 16px
+}
 .user {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+
 .user h5 {
-  margin-right: 8px;
+  margin-right: 16px;
+  color: white;
 }
 
 .logo-container {

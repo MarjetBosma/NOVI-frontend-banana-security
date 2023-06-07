@@ -15,7 +15,7 @@ function handleSubmit(e) {
         password: password,
     });
 
-   isAuth ? logout() : login()
+   isAuth ? logout() : login(email)
 }
 
   return (
