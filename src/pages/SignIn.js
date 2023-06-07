@@ -1,12 +1,20 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from "../context/AuthContext";
 
 function SignIn() {
-    const { login, logout, isAuth } = useContext(AuthContext)
+    const { login, logout, isAuth } = useContext(AuthContext);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
 function handleSubmit(e) {
-   e.preventDefault()
+   e.preventDefault();
+
+    console.log({
+        email: email,
+        password: password,
+    });
+
    isAuth ? logout() : login()
 }
 
@@ -16,7 +24,26 @@ function handleSubmit(e) {
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
 
       <form onSubmit={handleSubmit}>
-        <p>*invoervelden*</p>
+        <label htmlFor="email-field">
+            Emailadres
+            <input
+                type="email"
+                id="email-field"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+        </label>
+          <label htmlFor="password-field">
+              Wachtwoord
+              <input
+                  type="password"
+                  id="password-field"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+              />
+          </label>
         <button type="submit">Inloggen</button>
       </form>
 
