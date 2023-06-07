@@ -5,7 +5,8 @@ import { AuthContext } from "../context/AuthContext";
 function SignIn() {
     const { login, logout, isAuth } = useContext(AuthContext)
 
-function clickHandler() {
+function handleSubmit(e) {
+   e.preventDefault()
    isAuth ? logout() : login()
 }
 
@@ -14,9 +15,9 @@ function clickHandler() {
       <h1>Inloggen</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <p>*invoervelden*</p>
-        <button type="button" onClick={clickHandler}>Inloggen</button>
+        <button type="submit">Inloggen</button>
       </form>
 
       <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>

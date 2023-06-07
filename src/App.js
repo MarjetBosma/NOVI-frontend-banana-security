@@ -5,14 +5,14 @@ import Profile from './pages/Profile';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import PrivateRoute from "./components/PrivateRoute";
 import './App.css';
 import { AuthContext } from "./context/AuthContext";
-import { useNavigate } from 'react-router-dom'
+
 
 function App() {
     const { isAuth, login, logout } = useContext(AuthContext)
     console.log(isAuth)
-    const navigate = useNavigate()
 
   return (
     <>
@@ -21,7 +21,7 @@ function App() {
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/profile" element={isAuth ? <Profile /> : navigate("/signin")}/>
+          <Route path="/profile" element={<PrivateRoute isAuth={isAuth.isAuth}><Profile /></PrivateRoute>} />
           <Route exact path="/signin" element={<SignIn />}/>
           <Route exact path="/signup" element={<SignUp />}/>
         </Routes>
